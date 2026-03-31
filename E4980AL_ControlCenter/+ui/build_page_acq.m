@@ -9,6 +9,8 @@ uilabel(top, 'Text', sprintf('默认间隔: %.2fs | 默认时长: %.1fs', cfg.in
 
 logPanel = uipanel(page, 'Title', '采样日志', 'FontWeight', 'bold', ...
     'BackgroundColor', theme.C_panel, 'Position', [15 15 1125 450]);
-uitextarea(logPanel, 'Position', [15 15 1095 405], 'Editable', 'off', ...
+txtLog = uitextarea(logPanel, 'Position', [15 15 1095 405], 'Editable', 'off', ...
     'BackgroundColor', theme.C_logBg, 'Value', {'程序启动完成。'});
+
+page.UserData = struct('txtLog', txtLog);
 end
