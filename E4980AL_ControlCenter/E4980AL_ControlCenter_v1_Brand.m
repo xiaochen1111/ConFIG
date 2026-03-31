@@ -14,11 +14,15 @@ function E4980AL_ControlCenter_v1_Brand()
     pages.about = ui.build_page_about(appUi.contentPanel, state.theme, state.brand);
 
     % 回填关键控件句柄，供 app_actions/app_utils 使用
-    if isstruct(pages.control.UserData) && isfield(pages.control.UserData, 'txtIDN')
-        appUi.txtIDN = pages.control.UserData.txtIDN;
+    if isstruct(pages.control.UserData)
+        c = pages.control.UserData;
+        f = fieldnames(c);
+        for i = 1:numel(f), appUi.(f{i}) = c.(f{i}); end
     end
-    if isstruct(pages.acq.UserData) && isfield(pages.acq.UserData, 'txtLog')
-        appUi.txtLog = pages.acq.UserData.txtLog;
+    if isstruct(pages.acq.UserData)
+        a = pages.acq.UserData;
+        f = fieldnames(a);
+        for i = 1:numel(f), appUi.(f{i}) = a.(f{i}); end
     end
 
     dev = device.scpi_client();
